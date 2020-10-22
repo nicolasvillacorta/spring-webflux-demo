@@ -1,5 +1,7 @@
-package com.accenture.webfluxdemo.handler;
+package com.accenture.webfluxdemo.functionalmodel.handler;
 
+
+import java.time.Duration;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -15,16 +17,15 @@ public class SampleHandlerFunction {
 	public Mono<ServerResponse> flux(ServerRequest serverRequest){
 		
 		return ServerResponse.ok()
-				.contentType(MediaType.APPLICATION_JSON)
-				.body(
-						Flux.just(1, 2, 3, 4).log(),  // Body de la respuesta (Siempre flux o mono)
-						Integer.class //Hace falta aclarar el tipo del contenido de la misma.
-				);
-				
+					.contentType(MediaType.APPLICATION_STREAM_JSON)
+					.body(
+							Flux.just("Soy el uno ", "segundo", "tercero", "soy el ultimo").delayElements(Duration.ofSeconds(1)).log(),  // Body de la respuesta (Siempre flux o mono)
+							String.class //Hace falta aclarar el tipo del contenido de la misma.
+					);
 		
 	}
 	
-public Mono<ServerResponse> mono(ServerRequest serverRequest){
+	public Mono<ServerResponse> mono(ServerRequest serverRequest){
 		
 		return ServerResponse.ok()
 				.contentType(MediaType.APPLICATION_JSON)

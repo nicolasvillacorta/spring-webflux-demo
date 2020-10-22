@@ -1,4 +1,4 @@
-
+SIEMPRE QUE ACCDEMOS AL ORM, ES POR FLATMAP, MAP ES BLOQUEANTE.
 # Spring WebFlux
 Spring WebFlux proporciona a las aplicaciones Spring un stack web reactivo, completamente no bloqueante con soporte para back pressure. 
 

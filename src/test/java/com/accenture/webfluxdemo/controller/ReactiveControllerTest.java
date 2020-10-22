@@ -15,6 +15,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+// Este test ahora esta rompiendo por un problema con contexto de spring, debe ser alguna anotacion.
 @WebFluxTest // Genera la instancia del WebTestClient, solo funciona para testing de controladores no funcionales.
 @DirtiesContext
 class ReactiveControllerTest {
@@ -24,6 +25,7 @@ class ReactiveControllerTest {
 	
 	@Test
 	public void fluxApproach1() {
+		
 		Flux<Integer> integerFlux = webTestClient.get().uri("/flux")
 					.accept(MediaType.APPLICATION_JSON)
 					.exchange() // Se subscribe el subscriber...

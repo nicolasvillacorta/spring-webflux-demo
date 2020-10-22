@@ -1,4 +1,4 @@
-package com.accenture.webfluxdemo.controller;
+package com.accenture.webfluxdemo.controllermodel;
 
 import java.time.Duration;
 
@@ -17,9 +17,10 @@ public class ReactiveController {
 	@GetMapping("/flux")
 	public Flux<Integer> returnFlux(){
 		
-		return Flux.just(1, 2, 3, 4)
-				.delayElements(Duration.ofSeconds(1))
-				.log();
+		 return Flux.just(1, 2, 3, 4)
+				 .delayElements(Duration.ofSeconds(1))
+				 .log();
+		 
 	}
 	
 	// Aca mantiene la conexion abierta. Es un cold publisher, si lo accedo de mas de un cliente, reinicia siempre de 0

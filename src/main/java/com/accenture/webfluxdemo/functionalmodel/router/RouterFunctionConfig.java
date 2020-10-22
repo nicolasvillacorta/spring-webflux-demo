@@ -1,4 +1,4 @@
-package com.accenture.webfluxdemo.router;
+package com.accenture.webfluxdemo.functionalmodel.router;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 
@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.accenture.webfluxdemo.handler.SampleHandlerFunction;
+import com.accenture.webfluxdemo.functionalmodel.handler.SampleHandlerFunction;
 
 @Configuration
 public class RouterFunctionConfig {

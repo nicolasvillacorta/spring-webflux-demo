@@ -25,16 +25,15 @@ public class BackpressureTest {
 	}
 	
 	@Test
-	public void backPressure() {
+	public void backPressure() throws InterruptedException {
 		
 		Flux<Integer> finiteFlux = Flux.range(1, 10)
 				.log();
-		
+
 		finiteFlux.subscribe((element) -> System.out.println("Element is: " + element),
 				(e) -> System.err.println("Exception is: " + e),
 				() -> System.out.println("Done"),
 				(subscription -> subscription.request(2))); // El 4rto parametro del subscribe es el que regula el backpressure.
-		 
 	}
 	
 	@Test

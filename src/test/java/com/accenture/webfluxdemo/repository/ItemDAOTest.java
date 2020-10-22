@@ -42,7 +42,7 @@ public class ItemDAOTest {
 					System.out.println("Inserted item is: " + item);
 				})) // En onNext va a printear el nombre.
 				.blockLast(); // Este va a esperar que todos los items se hayan guardado antes de seguir y hacer el get, sino el get 
-							  // 	va a ejecutarse antes de haber guardado los items.
+							  // 	va a ejecutarse antes de haber guardado los items. SOLO  PARA TESTS, EN LA APP NO DEBERIAMOS BLOQUEAR.
 	}
 	
 	@Test
