@@ -19,8 +19,8 @@ public class SampleHandlerFunction {
 		return ServerResponse.ok()
 					.contentType(MediaType.APPLICATION_STREAM_JSON)
 					.body(
-							Flux.just("Soy el uno ", "segundo", "tercero", "soy el ultimo").delayElements(Duration.ofSeconds(1)).log(),  // Body de la respuesta (Siempre flux o mono)
-							String.class //Hace falta aclarar el tipo del contenido de la misma.
+							Flux.just(2, 4, 6, 8, 10, 12, 14).delayElements(Duration.ofSeconds(1)).log(),  // Body de la respuesta (Siempre flux o mono)
+							Integer.class //Hace falta aclarar el tipo del contenido de la misma.
 					);
 		
 	}

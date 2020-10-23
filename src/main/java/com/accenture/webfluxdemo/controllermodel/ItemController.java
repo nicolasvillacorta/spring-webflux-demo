@@ -33,7 +33,6 @@ public class ItemController {
 	@GetMapping(Constants.Endpoints.ITEM_CONTROLLER_ENDPOINT + "/{id}")
 	public Mono<ResponseEntity<Item>> getOneItem(@PathVariable String id){
 		
-		
 		return itemDAO.findById(id)
 				.map(item -> new ResponseEntity<>(item, HttpStatus.OK))
 				.defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -42,14 +41,16 @@ public class ItemController {
 	@PostMapping(Constants.Endpoints.ITEM_CONTROLLER_ENDPOINT)
 	@ResponseStatus(HttpStatus.CREATED)
 	public Mono<Item> createItem(@RequestBody Item item){
-		return itemDAO.save(item);
+		return itemDAO.save(item)
+				.log();
 	}
 	
 	// La documentacion de WebFlux dice que aunque no retornen nada los endpoints, hagamos que los metodos
 	// 	retornen una de las clases de Reactor, asi funciona bien el evento, sino retorna null y puede romper.
 	@DeleteMapping(Constants.Endpoints.ITEM_CONTROLLER_ENDPOINT + "/{id}")
 	public Mono<Void> deleteItem(@PathVariable String id){ 
-		return itemDAO.deleteById(id);
+		return itemDAO.deleteById(id)
+				.log();
 	}
 	
 	@PutMapping(Constants.Endpoints.ITEM_CONTROLLER_ENDPOINT + "/{id}")

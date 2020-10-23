@@ -21,7 +21,7 @@ public class ItemsHandler {
 	public Mono<ServerResponse> getAllItems(ServerRequest serverRequest) {
 		
 		return ServerResponse.ok()
-				.contentType(MediaType.APPLICATION_JSON)
+				.contentType(MediaType.APPLICATION_STREAM_JSON)
 				.body(itemDAO.findAll(), Item.class);
 		
 	}
@@ -41,7 +41,7 @@ public class ItemsHandler {
 	
 	public  Mono<ServerResponse> createOneItem(ServerRequest serverRequest) {
 		
-		Mono<Item> itemToBeInserted = serverRequest.bodyToMono(Item.class); // El save del ORM recibe tipos reactor, no POJOS.
+		Mono<Item> itemToBeInserted = serverRequest.bodyToMono(Item.class); // El save del ODM recibe tipos reactor, no POJOS.
 		
 		return itemToBeInserted.flatMap(item -> ServerResponse.ok()
 				.contentType(MediaType.APPLICATION_JSON).body(itemDAO.save(item), Item.class));
@@ -77,9 +77,9 @@ public class ItemsHandler {
 					});
 
 		return updatedItem
-				.flatMap(item -> ServerResponse.ok()
-					.contentType(MediaType.APPLICATION_JSON)
-					.body(BodyInserters.fromValue(item))
-				).switchIfEmpty(ServerResponse.notFound().build());
+					.flatMap(item -> ServerResponse.ok()
+						.contentType(MediaType.APPLICATION_JSON)
+						.body(BodyInserters.fromValue(item))
+					).switchIfEmpty(ServerResponse.notFound().build());
 	}
 }
