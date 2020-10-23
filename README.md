@@ -35,3 +35,5 @@ Reactor provee una clase llamada VirtualTime, para simular tiempos en test unita
 [Project Reactor](https://projectreactor.io/)
 
 [Project Reactor's Gitter](https://gitter.im/reactor/reactor)
+
+[Presentacion Tokyo Java Day 17/05/2017](https://www.slideshare.net/makingx/spring-framework-50-reactive-web-application-javadaytokyo)
