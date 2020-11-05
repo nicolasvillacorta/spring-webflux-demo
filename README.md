@@ -37,3 +37,5 @@ Reactor provee una clase llamada VirtualTime, para simular tiempos en test unita
 [Project Reactor's Gitter](https://gitter.im/reactor/reactor)
 
 [Presentacion Tokyo Java Day 17/05/2017](https://www.slideshare.net/makingx/spring-framework-50-reactive-web-application-javadaytokyo)
+
+[Backpressure's at  Medium](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7)
